@@ -5,6 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
+                mvn --version
                 pwd
                 echo 'Building..'
                 ls
