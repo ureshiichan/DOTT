@@ -30,8 +30,9 @@ pipeline {
                    cd cidr-api 
                    pwd
                    ls
+                   mvn clean package sonar:sonar
+                   pwd
                    '''
-                sh 'mvn clean package sonar:sonar'
                   }
                 }
              }
