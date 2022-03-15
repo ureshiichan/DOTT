@@ -4,13 +4,14 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                 pwd
+                pwd
                 echo 'Building..'
                 ls
+                docker run --rm -v "$(pwd)":/opt/maven -w /opt/maven maven:3.3.9-jdk-8 mvn clean install
                 '''
+
             }
-           withMaven(maven: 'mvn') {
-            sh "mvn clean package"
+          
         }
         }
         stage('Test') {
