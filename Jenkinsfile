@@ -23,6 +23,11 @@ pipeline {
             steps {
                withMaven(maven:'maven-latest') {
                 withSonarQubeEnv(credentialsId: 'jenkins-sonar', installationName: 'sq1') {
+                   sh '''
+                   cd cidr_convert_api 
+                   cd java
+                   cd cidr-api 
+                   '''
                 sh 'mvn clean package sonar:sonar'
                   }
                 }
