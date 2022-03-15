@@ -10,7 +10,7 @@ pipeline {
                 ls
                 '''
                 withMaven(maven: 'mvn') {
-                sh "mvn clean package"
+                sh "mvn --version"
                 }
             }
         }
