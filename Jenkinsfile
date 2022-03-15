@@ -9,7 +9,7 @@ pipeline {
                 echo 'Building..'
                 ls
                 '''
-                withMaven(maven:'Maven_3_3_9') {
+                withMaven(maven:'maven-latest') {
                 sh "mvn --version"
                 }
             }
