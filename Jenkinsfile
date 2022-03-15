@@ -4,12 +4,14 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                mvn --version
-                pwd
+                 pwd
                 echo 'Building..'
                 ls
                 '''
             }
+           withMaven(maven: 'mvn') {
+            sh "mvn clean package"
+        }
         }
         stage('Test') {
             steps {
