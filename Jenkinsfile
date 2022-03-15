@@ -25,8 +25,10 @@ pipeline {
                 withSonarQubeEnv(installationName: 'sq1') {
                 sh 'mvn --version'
                  sh '''
+                 pwd
                  cd cidr_convert_api
                  cd java
+                 pwd
                  mvn clean sonar:sonar
                  '''   
                 
