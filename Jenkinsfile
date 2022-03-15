@@ -25,7 +25,7 @@ pipeline {
 
         stage("build & SonarQube analysis") {
             steps {
-               withSonarQubeEnv(credentialsId: 'jenkins-sonar', installationName: 'sq1') {
+               withMaven(maven:'maven-latest') {
                    sh '''
                    pwd
                    cd cidr_convert_api 
@@ -33,8 +33,7 @@ pipeline {
                    cd cidr-api 
                    pwd
                    ls
-                   echo ${SCANNER_HOME}/bin/sonar-scanner
-                   ${SCANNER_HOME}/bin/sonar-scanner
+                   mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=ureshiichan_DOTT
                    pwd
                    '''
                 }
