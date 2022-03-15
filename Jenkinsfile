@@ -1,5 +1,9 @@
 pipeline {
    agent any
+   
+    environment {
+       SCANNER_HOME = tool 'sqs'
+    }
     stages {
         stage('Build') {
            
@@ -29,7 +33,7 @@ pipeline {
                    cd cidr-api 
                    pwd
                    ls
-                   mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar
+                   echo ${SCANNER_HOME}
                    pwd
                    '''
                 }
