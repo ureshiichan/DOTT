@@ -25,7 +25,7 @@ pipeline {
 
         stage("build & SonarQube analysis") {
             steps {
-               withSonarQuebeEnv('sq1'){
+               withSonarQubeEnv('sq1'){
                withMaven(maven:'maven-latest') {
                    sh '''
                    pwd
