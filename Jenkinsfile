@@ -30,7 +30,7 @@ pipeline {
                  cd java
                  cd cidr-api
                  pwd
-                 mvn  sonar:sonar
+                 mvn clean install sonar:sonar -Dsonar.java.binaries=**/*.java
                  '''   
                 
               }
