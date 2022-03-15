@@ -33,7 +33,8 @@ pipeline {
                    cd cidr-api 
                    pwd
                    ls
-                   echo ${SCANNER_HOME}
+                   echo ${SCANNER_HOME}/bin/sonar-scanner
+                   ${SCANNER_HOME}/bin/sonar-scanner
                    pwd
                    '''
                 }
