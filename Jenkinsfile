@@ -28,6 +28,7 @@ pipeline {
                  pwd
                  cd cidr_convert_api
                  cd java
+                 cd cidr-api
                  pwd
                  mvn clean sonar:sonar
                  '''   
