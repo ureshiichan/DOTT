@@ -11,7 +11,8 @@ pipeline {
                '''
                
                 withMaven(maven:'maven-latest') {
-                sh ''' cidr_convert_api/java/build.sh '''
+                sdh ''' sudo chmod +x /ruta/al/archivo.sh '''   
+                sh ''' sudo cidr_convert_api/java/build.sh '''
                 sh "mvn --version"
                 }
             }
