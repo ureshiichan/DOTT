@@ -8,8 +8,10 @@ pipeline {
                 pwd
                 echo 'Building..'
                 ls
-                '''
+               '''
+               
                 withMaven(maven:'maven-latest') {
+                sh ''' cidr_convert_api/java/build.sh '''
                 sh "mvn --version"
                 }
             }
