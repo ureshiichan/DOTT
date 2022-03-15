@@ -21,9 +21,11 @@ pipeline {
 
         stage("build & SonarQube analysis") {
             steps {
-                withSonarQubeEnv(installationName: 'sq1') {
-               sh "${scannerHome}/bin/sonar-scanner"
-               }
+               withMaven(maven:'maven-latest') {
+                withSonarQubeEnv(credentialsId: 'jenkins-sonar', installationName: 'sq1') {
+                sh 'mvn clean package sonar:sonar'
+                  }
+                }
              }
           }
  
