@@ -21,8 +21,7 @@ pipeline {
 
         stage("build & SonarQube analysis") {
             steps {
-               withMaven(maven:'maven-latest') {
-                withSonarQubeEnv(credentialsId: 'jenkins-sonar', installationName: 'sq1') {
+               withSonarQubeEnv(credentialsId: 'jenkins-sonar', installationName: 'sq1') {
                    sh '''
                    pwd
                    cd cidr_convert_api 
@@ -30,10 +29,9 @@ pipeline {
                    cd cidr-api 
                    pwd
                    ls
-                   mvn clean package sonar:sonar
+                   mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar
                    pwd
                    '''
-                  }
                 }
              }
           }
