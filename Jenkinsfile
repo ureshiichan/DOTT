@@ -30,7 +30,7 @@ pipeline {
                  cd java
                  cd cidr-api
                  pwd
-                 mvn clean sonar:sonar
+                 mvn  sonar:sonar
                  '''   
                 
               }
