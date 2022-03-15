@@ -21,22 +21,10 @@ pipeline {
 
         stage("build & SonarQube analysis") {
             steps {
-               withMaven(maven:'maven-latest') {
                 withSonarQubeEnv(installationName: 'sq1') {
-                sh 'mvn --version'
-                 sh '''
-                 pwd
-                 cd cidr_convert_api
-                 cd java
-                 cd cidr-api
-                 pwd
-                 mvn clean install sonar:sonar -Dsonar.java.binaries=**/*.java
-                 '''   
-                
-              }
-                }
-             
-            }
+               sh "${scannerHome}/bin/sonar-scanner"
+               }
+             }
           }
  
 
