@@ -12,6 +12,11 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+         
+     <properties>
+           <sonar.organization>ureshiichan</sonar.organization>
+           <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+       </properties>
 
     <dependencies>
         <dependency>
@@ -35,10 +40,7 @@
             <artifactId>gson</artifactId>
             <version>2.2.4</version>
         </dependency>
-       <properties>
-           <sonar.organization>ureshiichan</sonar.organization>
-           <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-       </properties>
+
     </dependencies>
 
     <build>
