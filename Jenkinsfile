@@ -18,7 +18,7 @@ pipeline {
                 }
             }
         }
-           stages {
+          
           stage("build & SonarQube analysis") {
             agent any
             steps {
@@ -26,7 +26,7 @@ pipeline {
                 sh 'mvn clean package sonar:sonar'
               }
             }
-          }
+ 
 
         stage('Test') {
             steps {
