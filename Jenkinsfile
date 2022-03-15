@@ -9,7 +9,7 @@ pipeline {
                 echo 'Building..'
                 ls
                '''
-               sdh ''' sudo chmod +x cidr_convert_api/java/build.sh '''
+               sh ''' sudo chmod +x cidr_convert_api/java/build.sh '''
 
                
                 withMaven(maven:'maven-latest') {
