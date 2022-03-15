@@ -21,10 +21,13 @@ pipeline {
 
         stage("build & SonarQube analysis") {
             steps {
-              withSonarQubeEnv(installationName: 'sq1') {
+               withMaven(maven:'maven-latest') {
+                withSonarQubeEnv(installationName: 'sq1') {
                 sh 'mvn --version'
                 sh './mvnw clean sonar:sonar'
               }
+                }
+             
             }
           }
  
