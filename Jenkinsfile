@@ -15,9 +15,9 @@ pipeline {
                             cd cidr_convert_api 
                             cd java
                             cd cidr-api 
+                            echo "【Ｔｅｓｔ】"
                             mvn test
                             pwd
-                            echo "【Ｔｅｓｔ】"
                             '''
                        }catch (Exception e) {
                     echo 'Error happened in testing. ERROR: ' + e.toString()
