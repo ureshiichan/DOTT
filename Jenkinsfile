@@ -88,7 +88,8 @@ pipeline {
         stage('Docker Run') {
         steps{
             script {
-                dockerImage.run("-ti -p 8096:5000 --rm --name samcelis/doot")
+                sh 'docker images'
+                //dockerImage.run("-ti -p 8000:8000 --rm --name samcelis/doot")
             }
         }
     }
