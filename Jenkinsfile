@@ -5,6 +5,7 @@ pipeline {
        SCANNER_HOME = tool 'sqs'
        dockerImage=""
        registry="samcelis/doot"
+       registryCredential="dockerhub"
     }
     stages {
        
@@ -74,9 +75,13 @@ pipeline {
                 }
 
         
-        stage('Deploy') {
+        stage('upload image') {
             steps {
-                echo "deploy"
+                script{
+                    docker.withRegistry('',registryCredential){
+                        dockerImage.push()
+                    }
+                }
             }
         }
     }
