@@ -32,9 +32,12 @@ pipeline {
         stage('Build') {
            
             steps {
-               sh "【B】【u】【i】【l】【d】"
+                sh '''
+                 echo "【B】【u】【i】【l】【d】"
+               '''
                sh ''' chmod +x cidr_convert_api/java/build.sh '''
-                withMaven(maven:'maven-latest') {
+
+               withMaven(maven:'maven-latest') {
                 sh '''cidr_convert_api/java/build.sh '''
                 }
             }
@@ -45,7 +48,6 @@ pipeline {
        
         stage("SonarQube analysis") {
             steps {
-                echo '✩░▒▓▆▅▃▂▁𝐒𝐂𝐀𝐍𝐍𝐄𝐑▁▂▃▅▆▓▒░✩'
                withSonarQubeEnv('sq1'){
                withMaven(maven:'maven-latest') {
                    sh '''
