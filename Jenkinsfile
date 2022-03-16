@@ -48,13 +48,14 @@ pipeline {
        
         stage("SonarQube analysis") {
             steps {
+               echo "✩░▒▓▆▅▃▂▁𝐒𝐜𝐚𝐧𝐧𝐞𝐫▁▂▃▅▆▓▒░✩"
                withSonarQubeEnv('sq1'){
                withMaven(maven:'maven-latest') {
                    sh '''
                    cd cidr_convert_api 
                    cd java
                    cd cidr-api 
-                   mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=ureshiichan_DOTT
+                   mvn  org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=ureshiichan_DOTT
                    '''
                 }
                }
