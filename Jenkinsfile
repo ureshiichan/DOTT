@@ -68,7 +68,7 @@ pipeline {
         stage('Build docker image') {
              steps {
                     script{
-                           dockerImage = docker.build("${registry}","./cidr_convert_api/java/Dockerfile ")
+                           dockerImage = docker.build("${registry}","./cidr_convert_api/java/ ")
                         }
                     }
                 }
