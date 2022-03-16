@@ -65,12 +65,18 @@ pipeline {
           }
  
         
-
+        stage('Build docker image') {
+             steps {
+                    script{
+                           dockerImage = docker.build.registry
+                        }
+                    }
+                }
 
         
         stage('Deploy') {
             steps {
-                docker --version
+                //docker --version
             }
         }
     }
