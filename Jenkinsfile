@@ -64,13 +64,7 @@ pipeline {
              }
           }
  
-        stage('Build docker image') {
-            steps {
-                script{
-                    dockerImage = docker.build.registry
-                }
-            }
-        }
+        
 
 
         
