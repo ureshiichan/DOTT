@@ -6,7 +6,26 @@ pipeline {
     }
     stages {
        
-     
+     stage('Test') {
+            steps {
+               withMaven(maven:'maven-latest') {
+                   script{
+                       try{
+                           sh '''
+                            cd cidr_convert_api 
+                            cd java
+                            cd cidr-api 
+                            mvn test
+                            pwd
+                            '''
+                       }catch (Exception e) {
+                    echo 'Error happened in testing. ERROR: ' + e.toString()
+                    }
+                   }
+                   
+               }
+            }
+        }
        
        
         stage('Build') {
@@ -27,19 +46,7 @@ pipeline {
             }
         }
 
-         stage('Test') {
-            steps {
-               withMaven(maven:'maven-latest') {
-                   sh '''
-                   cd cidr_convert_api 
-                   cd java
-                   cd cidr-api 
-                   mvn test
-                   pwd
-                   '''
-               }
-            }
-        }
+         
        
        
         stage("SonarQube analysis") {
