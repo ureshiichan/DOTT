@@ -17,6 +17,7 @@ pipeline {
                             cd cidr-api 
                             mvn test
                             pwd
+                            echo "【Ｔｅｓｔ】"
                             '''
                        }catch (Exception e) {
                     echo 'Error happened in testing. ERROR: ' + e.toString()
@@ -32,14 +33,11 @@ pipeline {
            
             steps {
                 sh '''
-                pwd
-                echo 'Building..'
-                ls
+                 echo "【B】【u】【i】【l】【d】"
                '''
                sh ''' chmod +x cidr_convert_api/java/build.sh '''
 
-               
-                withMaven(maven:'maven-latest') {
+               withMaven(maven:'maven-latest') {
                 sh '''cidr_convert_api/java/build.sh '''
                 }
             }
@@ -53,14 +51,11 @@ pipeline {
                withSonarQubeEnv('sq1'){
                withMaven(maven:'maven-latest') {
                    sh '''
-                   pwd
                    cd cidr_convert_api 
                    cd java
                    cd cidr-api 
-                   pwd
-                   ls
+                   echo "°°°·.°·..·°¯°·._.· Scanner ·._.·°¯°·.·° .·°°°"
                    mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=ureshiichan_DOTT
-                   pwd
                    '''
                 }
                }
