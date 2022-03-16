@@ -6,19 +6,7 @@ pipeline {
     }
     stages {
        
-       stage('Test') {
-            steps {
-               withMaven(maven:'maven-latest') {
-                   sh '''
-                   cd cidr_convert_api 
-                   cd java
-                   cd cidr-api 
-                   mvn test
-                   pwd
-                   '''
-               }
-            }
-        }
+     
        
        
         stage('Build') {
@@ -39,7 +27,22 @@ pipeline {
             }
         }
 
-        stage("build & SonarQube analysis") {
+         stage('Test') {
+            steps {
+               withMaven(maven:'maven-latest') {
+                   sh '''
+                   cd cidr_convert_api 
+                   cd java
+                   cd cidr-api 
+                   mvn test
+                   pwd
+                   '''
+               }
+            }
+        }
+       
+       
+        stage("SonarQube analysis") {
             steps {
                withSonarQubeEnv('sq1'){
                withMaven(maven:'maven-latest') {
