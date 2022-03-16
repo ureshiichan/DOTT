@@ -3,6 +3,8 @@ pipeline {
    
     environment {
        SCANNER_HOME = tool 'sqs'
+       dockerImage=""
+       registry="samcelis/doot"
     }
     stages {
        
@@ -62,6 +64,14 @@ pipeline {
              }
           }
  
+        stage('Build docker image') {
+            steps {
+                script{
+                    dockerImage = docker.build.registry
+                }
+            }
+        }
+
 
         
         stage('Deploy') {
