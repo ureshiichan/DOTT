@@ -5,6 +5,22 @@ pipeline {
        SCANNER_HOME = tool 'sqs'
     }
     stages {
+       
+       stage('Test') {
+            steps {
+               withMaven(maven:'maven-latest') {
+                   sh '''
+                   cd cidr_convert_api 
+                   cd java
+                   cd cidr-api 
+                   mvn test
+                   pwd
+                   '''
+               }
+            }
+        }
+       
+       
         stage('Build') {
            
             steps {
@@ -43,11 +59,7 @@ pipeline {
           }
  
 
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
+        
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
