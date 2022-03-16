@@ -40,7 +40,6 @@ pipeline {
 
                
                 withMaven(maven:'maven-latest') {
-                sh "mvn --version"
                 sh '''cidr_convert_api/java/build.sh '''
                 }
             }
