@@ -21,6 +21,7 @@ public class ConvertTest extends TestCase
     }
 
      public  void print(){
+        assertTrue(true)
         System.out.println("Test starting");
     }
 
