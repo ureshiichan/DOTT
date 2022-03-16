@@ -4,8 +4,8 @@ pipeline {
     environment {
        SCANNER_HOME = tool 'sqs'
        dockerImage=""
-       registry="samcelis/doot"
-       registryCredential="dockerhub"
+       repository="samcelis/doot"
+       dhCredential="dockerhub"
     }
     stages {
        
@@ -69,7 +69,7 @@ pipeline {
         stage('Build docker image') {
              steps {
                     script{
-                           dockerImage = docker.build("${registry}","./cidr_convert_api/java/ ")
+                           dockerImage = docker.build("${repository}","./cidr_convert_api/java/ ")
                         }
                     }
                 }
@@ -78,7 +78,7 @@ pipeline {
         stage('upload image') {
             steps {
                 script{
-                    docker.withRegistry('',registryCredential){
+                    docker.withRegistry('',dhCredential){
                         dockerImage.push()
                     }
                 }
