@@ -20,10 +20,14 @@ public class ConvertTest extends TestCase
         return new TestSuite( ConvertTest.class );
     }
 
-     public  void print(){
-        assertTrue(true);
-        System.out.println("Test starting");
-    }
+    public void testValidIpv4()
+        {
+            assertTrue(Convert.ipv4Validation("127.0.0.1"));
+            assertTrue(Convert.ipv4Validation("0.0.0.0"));
+            assertTrue(Convert.ipv4Validation("192.168.0.1"));
+            assertTrue(Convert.ipv4Validation("255.255.255.255"));
+        }
+    
 
 /*
     public void testValidCidrToMask()
@@ -42,13 +46,7 @@ public class ConvertTest extends TestCase
         assertEquals("32", Convert.maskToCidr("255.255.255.255"));
     }
 
-    public void testValidIpv4()
-    {
-        assertTrue(Convert.ipv4Validation("127.0.0.1"));
-        assertTrue(Convert.ipv4Validation("0.0.0.0"));
-        assertTrue(Convert.ipv4Validation("192.168.0.1"));
-        assertTrue(Convert.ipv4Validation("255.255.255.255"));
-    }
+   
 
     public void testInvalidMaskToCidr()
     {
