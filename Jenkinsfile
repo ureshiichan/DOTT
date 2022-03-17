@@ -65,7 +65,16 @@ pipeline {
              }
           }
  
-        
+         stage('Quit old image') {
+             steps {
+                    script{
+                           sh 'docker images'
+                           sh "docker rmi ${repository}"
+                        }
+                    }
+                }
+
+
         stage('Build docker image') {
              steps {
                     script{
@@ -85,6 +94,18 @@ pipeline {
             }
         }
 
+        stage('stop old container') {
+        steps{
+            script {
+                try{
+                    sh 'docker rm -f api'
+                }catch(Exception e){
+                    echo e.toString()
+                }
+            }
+        }
+    }
+
         stage('Docker Run') {
         steps{
             script {
@@ -93,5 +114,16 @@ pipeline {
             }
         }
     }
+
+       stage('Remove dangling image') {
+        steps{
+            script {
+                sh 'docker image prune'
+                
+            }
+        }
+    }
+
+
     }
 }
