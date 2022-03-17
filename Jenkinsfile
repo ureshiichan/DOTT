@@ -11,11 +11,9 @@ pipeline {
        
      stage('Test') {
             steps {
-              cat <<'END_CAT'
-                    /\_/\
-                    ( o.o )
-                    > ^ <
-                    END_CAT 
+             echo ' /\_/\
+( o.o )
+ > ^ <'
                withMaven(maven:'maven-latest') {
                    script{
                        try{
