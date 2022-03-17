@@ -65,14 +65,7 @@ pipeline {
              }
           }
  
-         stage('Quit old image') {
-             steps {
-                    script{
-                           sh 'docker images'
-                           sh "docker rmi ${repository}"
-                        }
-                    }
-                }
+         
 
 
         stage('Build docker image') {
@@ -83,7 +76,8 @@ pipeline {
                     }
                 }
 
-        
+              
+
         stage('upload image') {
             steps {
                 script{
