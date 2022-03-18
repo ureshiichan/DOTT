@@ -6,7 +6,6 @@ public class Convert {
 
 public static String matrix[][]=
         {
-        {"0","0.0.0.0"},
         {"1","128.0.0.0"},
         {"2","192.0.0.0"},
         {"3","224.0.0.0"},
@@ -43,7 +42,7 @@ public static String matrix[][]=
 
     
     public static String cidrToMask(String x) {
-        for(int i=0;i<=32;i++){
+        for(int i=0;i<32;i++){
           if(matrix[i][0]==x){
               return matrix[i][1];
             }
@@ -53,7 +52,7 @@ public static String matrix[][]=
     }
 
     public static String maskToCidr(String x) {
-        for(int i=0;i<=32;i++){
+        for(int i=0;i<32;i++){
           if(matrix[i][1]==x){
               return matrix[i][0];
             }
