@@ -123,7 +123,7 @@ pipeline {
                 echo "▙ ▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▟"
             script {
                 sh 'docker images'
-                dockerImage.run("-ti -p 8000:8000  --name api")
+                dockerImage.run("-ti -p 80:8000  --name api")
             }
         }
     }
