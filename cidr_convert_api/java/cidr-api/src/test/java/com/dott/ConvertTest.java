@@ -20,7 +20,7 @@ public class ConvertTest extends TestCase
         return new TestSuite( ConvertTest.class );
     }
 
-    public void testValidIpv4()
+    public void testValidIpv4C()
         {
             assertTrue(Convert.ipv4Validation("127.0.0.1"));
             assertTrue(Convert.ipv4Validation("0.0.0.0"));
